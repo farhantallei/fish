@@ -1,0 +1,9 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR __fish_initialized:4300
+SETUVAR __fish_webconfig_theme_notification:set\x2dtheme\x2dv1\x2d\x235
+SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eedc/bass
+SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR fish_user_paths:/Users/farhantallei/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/opt/homebrew/opt/libpq/bin\x1e/opt/homebrew/opt/postgresql\x4016/bin\x1e/opt/homebrew/opt/tcl\x2dtk/bin\x1e/Users/farhantallei/\x2econsole\x2dninja/\x2ebin\x1e/Users/farhantallei/\x2elocal/bin\x1e/Users/farhantallei/gh/bin\x1e/Users/farhantallei/go/bin\x1e/Users/farhantallei/\x2ebun/bin\x1e/Users/farhantallei/nvim\x2dmacos\x2darm64/bin\x1e/Users/farhantallei/\x2eopencode/bin

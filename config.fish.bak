@@ -1,0 +1,21 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    alias nvim='~/nvim-macos-arm64/bin/nvim'
+end
+
+# Auto-Warpify
+status --is-interactive; and printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "fish", "uname": "Darwin" }}œ' 
+
+# Homebrew
+set -gx PATH /opt/homebrew/bin $PATH
+
+# Bun
+set --export PATH "$HOME/.bun/bin" $PATH
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+
+
+# opencode
+fish_add_path /Users/farhantallei/.opencode/bin
+starship init fish | source

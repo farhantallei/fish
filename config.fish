@@ -1,0 +1,155 @@
+### =====================================================
+### Environment Variables
+### =====================================================
+
+# Node / NVM
+# set -x NVM_DIR $HOME/.nvm
+
+# Bun
+set -x BUN_INSTALL $HOME/.bun
+
+# Go
+set -x GOPATH $HOME/go
+
+# Editors
+set -x EDITOR nvim
+set -x VISUAL nvim
+
+# Tcl/Tk
+set -x TK_LIBRARY /opt/homebrew/opt/tcl-tk/lib/tcl9.0
+set -x TCL_LIBRARY /opt/homebrew/opt/tcl-tk/lib/tcl9.0
+
+### =====================================================
+### PATH (fish way, urut & aman)
+### =====================================================
+
+fish_add_path \
+    /opt/homebrew/bin \
+    /opt/homebrew/sbin \
+    /opt/homebrew/opt/libpq/bin \
+    /opt/homebrew/opt/postgresql@16/bin \
+    /opt/homebrew/opt/tcl-tk/bin \
+    $HOME/.console-ninja/.bin \
+    $HOME/.opencode/bin \
+    $HOME/.local/bin \
+    $HOME/gh/bin \
+    $HOME/go/bin \
+    $HOME/.cargo/bin \
+    $BUN_INSTALL/bin \
+    $HOME/nvim-macos-arm64/bin
+
+### =====================================================
+### Load Tools
+### =====================================================
+
+# NVM (pakai bass / nvm.fish)
+# rekomendasi: https://github.com/jorgebucaran/nvm.fish
+
+# Bun
+# if test -f $HOME/.bun/_bun
+#     source $HOME/.bun/_bun
+# end
+
+# Zoxide
+zoxide init fish | source
+
+### =====================================================
+### Aliases
+### =====================================================
+
+# Python
+alias python python3
+alias pip pip3
+
+# Neovim
+alias v nvim
+alias vi nvim
+
+# SSH
+alias s sshs
+
+# Reload
+alias sf 'source ~/.config/fish/config.fish'
+
+# Custom Neovim shortcuts
+alias vz 'nvim ~/.zshrc'
+alias vt 'nvim ~/.tmux.conf'
+alias vs 'nvim ~/.ssh/config'
+alias vy 'nvim ~/.config/yazi'
+
+### =====================================================
+### Functions
+### =====================================================
+
+# tmux helper
+function t
+    set session main
+    test (count $argv) -gt 0; and set session $argv[1]
+    tmux attach -t $session; or tmux new-session -s $session
+end
+
+# yazi cd integration
+function Z
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    command yazi $argv --cwd-file="$tmp"
+    if read -z cwd <"$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
+end
+
+# Neovim config jump
+function vn
+    if test (count $argv) -eq 0
+        nvim ~/.config/nvim
+    else
+        nvim ~/.config/nvim/$argv
+    end
+end
+
+function vw
+    if test (count $argv) -eq 0
+        nvim ~/.config/wezterm
+    else
+        nvim ~/.config/wezterm/$argv
+    end
+end
+
+function vf
+    if test (count $argv) -eq 0
+        nvim ~/.config/fish
+    else
+        nvim ~/.config/fish/$argv
+    end
+end
+
+### =====================================================
+### Keybindings
+### =====================================================
+
+# Alt + b / f
+bind \eb backward-word
+bind \ef forward-word
+
+# History search (arrow up/down)
+bind \e\[A history-search-backward
+bind \e\[B history-search-forward
+
+### =====================================================
+### Project Aliases
+### =====================================================
+
+alias b2qf "$HOME/myproj/rust/b2qf/target/release/b2qf"
+
+### =====================================================
+### FNM
+### =====================================================
+
+# fnm (Node.js)
+fnm env --use-on-cd | source
+
+### =====================================================
+### Prompt (Starship)
+### =====================================================
+
+starship init fish | source

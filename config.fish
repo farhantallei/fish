@@ -2,9 +2,6 @@
 ### Environment Variables
 ### =====================================================
 
-# Node / NVM
-# set -x NVM_DIR $HOME/.nvm
-
 # Bun
 set -x BUN_INSTALL $HOME/.bun
 
@@ -18,6 +15,12 @@ set -x VISUAL nvim
 # Tcl/Tk
 set -x TK_LIBRARY /opt/homebrew/opt/tcl-tk/lib/tcl9.0
 set -x TCL_LIBRARY /opt/homebrew/opt/tcl-tk/lib/tcl9.0
+
+### =====================================================
+### Options
+### =====================================================
+
+set -g fish_greeting ""
 
 ### =====================================================
 ### PATH (fish way, urut & aman)
@@ -42,16 +45,17 @@ fish_add_path \
 ### Load Tools
 ### =====================================================
 
-# NVM (pakai bass / nvm.fish)
-# rekomendasi: https://github.com/jorgebucaran/nvm.fish
-
-# Bun
-# if test -f $HOME/.bun/_bun
-#     source $HOME/.bun/_bun
-# end
-
 # Zoxide
 zoxide init fish | source
+
+# fnm (Node.js)
+fnm env --use-on-cd | source
+
+# direnv
+direnv hook fish | source
+
+# prompt starship
+starship init fish | source
 
 ### =====================================================
 ### Aliases
@@ -64,18 +68,28 @@ alias pip pip3
 # Neovim
 alias v nvim
 alias vi nvim
+# alias vim nvim
 
 # SSH
 alias s sshs
 
+# BTOP
+alias b btop
+
 # Reload
-alias sf 'source ~/.config/fish/config.fish'
+alias sf 'exec fish'
 
 # Custom Neovim shortcuts
 alias vz 'nvim ~/.zshrc'
 alias vt 'nvim ~/.tmux.conf'
 alias vs 'nvim ~/.ssh/config'
 alias vy 'nvim ~/.config/yazi'
+
+# Exit all
+# alias qa 'tmux kill-server; exit'
+
+# Project
+alias b2qf "$HOME/myproj/rust/b2qf/target/release/b2qf"
 
 ### =====================================================
 ### Functions
@@ -123,6 +137,14 @@ function vf
     end
 end
 
+# Exit all
+function qa
+    if set -q TMUX
+        tmux kill-server
+    end
+    exit
+end
+
 ### =====================================================
 ### Keybindings
 ### =====================================================
@@ -136,20 +158,23 @@ bind \e\[A history-search-backward
 bind \e\[B history-search-forward
 
 ### =====================================================
-### Project Aliases
+### SESSION TMUX
 ### =====================================================
 
-alias b2qf "$HOME/myproj/rust/b2qf/target/release/b2qf"
+set session main
+if test (count $argv) -gt 0
+    set session $argv[1]
+end
+
+if not set -q TMUX
+    tmux attach -t $session 2>/dev/null
+    or tmux new-session -s $session
+end
 
 ### =====================================================
-### FNM
+### FASTFETCH
 ### =====================================================
 
-# fnm (Node.js)
-fnm env --use-on-cd | source
-
-### =====================================================
-### Prompt (Starship)
-### =====================================================
-
-starship init fish | source
+if status --is-interactive
+    fastfetch
+end

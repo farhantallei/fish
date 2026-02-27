@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export --path PATH:/Users/farhantallei/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/opt/homebrew/opt/libpq/bin\x1e/opt/homebrew/opt/postgresql\x4016/bin\x1e/opt/homebrew/opt/tcl\x2dtk/bin\x1e/Users/farhantallei/\x2econsole\x2dninja/\x2ebin\x1e/Users/farhantallei/\x2elocal/bin\x1e/Users/farhantallei/gh/bin\x1e/Users/farhantallei/go/bin\x1e/Users/farhantallei/\x2ebun/bin\x1e/Users/farhantallei/nvim\x2dmacos\x2darm64/bin\x1e/Users/farhantallei/\x2eopencode/bin\x1e/usr/local/bin\x1e/System/Cryptexes/App/usr/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/local/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/appleinternal/bin\x1e/opt/pmk/env/global/bin\x1e/usr/local/share/dotnet\x1e\x7e/\x2edotnet/tools\x1e/Applications/WezTerm\x2eapp/Contents/MacOS
 SETUVAR __fish_initialized:4300
 SETUVAR __fish_webconfig_theme_notification:set\x2dtheme\x2dv1\x2d\x235
 SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish

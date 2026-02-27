@@ -6,6 +6,20 @@ function doctor
     # echo "PATH:"
     # string split : $PATH | sed 's/^/  - /'
 
+    # Fish
+    if type -q fish
+        echo "✔ fish: "(fish --version)
+    else
+        echo "✖ fish not found"
+    end
+
+    # Brew
+    if type -q brew
+        echo "✔ brew: "(brew --version)
+    else
+        echo "✖ brew not found"
+    end
+
     # Node
     if type -q node
         echo "✔ node: "(node -v)
@@ -45,6 +59,32 @@ function doctor
         echo "✔ go: "(go version)
     else
         echo "✖ go not found"
+    end
+
+    # Python
+    if type -q python
+        echo "✔ python: "(python --version)
+    else
+        echo "✖ python not found"
+    end
+
+    if type -q pip
+        echo "✔ pip: "(pip --version)
+    else
+        echo "✖ pip not found"
+    end
+
+    # Java
+    if type -q java
+        echo "✔ java: "(java --version)
+    else
+        echo "✖ java not found"
+    end
+
+    if type -q javac
+        echo "✔ javac: "(javac --version)
+    else
+        echo "✖ javac not found"
     end
 
     # Vim
